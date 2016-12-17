@@ -23,5 +23,8 @@
     <Setting Name="targetChannel" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="chatFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{0} {1}</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -28,7 +28,7 @@ namespace DiscordBouyomichan.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string mail {
             get {
-                return ((string)(CryptoGrapher.Decrypt(this["mail"].ToString())));
+                return CryptoGrapher.Decrypt(((string)(this["mail"])));
             }
             set {
                 this["mail"] = CryptoGrapher.Encrypt(value);
@@ -41,7 +41,7 @@ namespace DiscordBouyomichan.Properties {
         public string password {
             get
             {
-                return ((string)(CryptoGrapher.Decrypt(this["password"].ToString())));
+                return CryptoGrapher.Decrypt(((string)(this["password"])));
             }
             set {
                 this["password"] = CryptoGrapher.Encrypt(value);
@@ -105,6 +105,18 @@ namespace DiscordBouyomichan.Properties {
             }
             set {
                 this["targetChannel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0} {1}")]
+        public string chatFormat {
+            get {
+                return ((string)(this["chatFormat"]));
+            }
+            set {
+                this["chatFormat"] = value;
             }
         }
     }

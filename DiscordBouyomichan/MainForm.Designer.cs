@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lbTargetChannel = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.cbTargetServer = new System.Windows.Forms.ComboBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslDiscordConnection = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslBouyomiConnection = new System.Windows.Forms.ToolStripStatusLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbMailAddr = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.lMail = new System.Windows.Forms.Label();
             this.lPassword = new System.Windows.Forms.Label();
             this.lServer = new System.Windows.Forms.Label();
@@ -48,9 +48,11 @@
             this.gbAccount = new System.Windows.Forms.GroupBox();
             this.msHelp = new System.Windows.Forms.MenuStrip();
             this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAck = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWebsite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAck = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbChatFormat = new System.Windows.Forms.TextBox();
+            this.lChatFormat = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             this.gbChannelRestrict.SuspendLayout();
             this.gbAccount.SuspendLayout();
@@ -61,28 +63,28 @@
             // 
             this.lbTargetChannel.FormattingEnabled = true;
             this.lbTargetChannel.ItemHeight = 12;
-            this.lbTargetChannel.Location = new System.Drawing.Point(74, 65);
+            this.lbTargetChannel.Location = new System.Drawing.Point(112, 65);
             this.lbTargetChannel.Name = "lbTargetChannel";
-            this.lbTargetChannel.Size = new System.Drawing.Size(188, 64);
+            this.lbTargetChannel.Size = new System.Drawing.Size(180, 64);
             this.lbTargetChannel.TabIndex = 0;
             // 
-            // button1
+            // btnLogin
             // 
-            this.button1.Location = new System.Drawing.Point(82, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "ログイン";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLogin.Location = new System.Drawing.Point(112, 70);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(180, 23);
+            this.btnLogin.TabIndex = 1;
+            this.btnLogin.Text = "ログイン";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbTargetServer
             // 
             this.cbTargetServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTargetServer.FormattingEnabled = true;
-            this.cbTargetServer.Location = new System.Drawing.Point(74, 39);
+            this.cbTargetServer.Location = new System.Drawing.Point(112, 39);
             this.cbTargetServer.Name = "cbTargetServer";
-            this.cbTargetServer.Size = new System.Drawing.Size(188, 20);
+            this.cbTargetServer.Size = new System.Drawing.Size(180, 20);
             this.cbTargetServer.TabIndex = 2;
             this.cbTargetServer.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -91,9 +93,9 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslDiscordConnection,
             this.tsslBouyomiConnection});
-            this.statusStrip.Location = new System.Drawing.Point(0, 332);
+            this.statusStrip.Location = new System.Drawing.Point(0, 362);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(309, 24);
+            this.statusStrip.Size = new System.Drawing.Size(328, 24);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 4;
             this.statusStrip.Text = "statusStrip1";
@@ -113,20 +115,20 @@
             this.tsslBouyomiConnection.Size = new System.Drawing.Size(155, 19);
             this.tsslBouyomiConnection.Text = "棒読みちゃん未接続";
             // 
-            // textBox1
+            // tbMailAddr
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 19);
-            this.textBox1.TabIndex = 5;
+            this.tbMailAddr.Location = new System.Drawing.Point(112, 20);
+            this.tbMailAddr.Name = "tbMailAddr";
+            this.tbMailAddr.Size = new System.Drawing.Size(180, 19);
+            this.tbMailAddr.TabIndex = 5;
             // 
-            // textBox2
+            // tbPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(82, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '●';
-            this.textBox2.Size = new System.Drawing.Size(180, 19);
-            this.textBox2.TabIndex = 6;
+            this.tbPassword.Location = new System.Drawing.Point(112, 45);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '●';
+            this.tbPassword.Size = new System.Drawing.Size(180, 19);
+            this.tbPassword.TabIndex = 6;
             // 
             // lMail
             // 
@@ -195,7 +197,7 @@
             this.gbChannelRestrict.Enabled = false;
             this.gbChannelRestrict.Location = new System.Drawing.Point(12, 184);
             this.gbChannelRestrict.Name = "gbChannelRestrict";
-            this.gbChannelRestrict.Size = new System.Drawing.Size(277, 140);
+            this.gbChannelRestrict.Size = new System.Drawing.Size(306, 140);
             this.gbChannelRestrict.TabIndex = 13;
             this.gbChannelRestrict.TabStop = false;
             this.gbChannelRestrict.Text = "チャンネル制限";
@@ -215,14 +217,14 @@
             // 
             // gbAccount
             // 
-            this.gbAccount.Controls.Add(this.button1);
-            this.gbAccount.Controls.Add(this.textBox1);
-            this.gbAccount.Controls.Add(this.textBox2);
+            this.gbAccount.Controls.Add(this.btnLogin);
+            this.gbAccount.Controls.Add(this.tbMailAddr);
+            this.gbAccount.Controls.Add(this.tbPassword);
             this.gbAccount.Controls.Add(this.lPassword);
             this.gbAccount.Controls.Add(this.lMail);
             this.gbAccount.Location = new System.Drawing.Point(12, 27);
             this.gbAccount.Name = "gbAccount";
-            this.gbAccount.Size = new System.Drawing.Size(277, 107);
+            this.gbAccount.Size = new System.Drawing.Size(306, 107);
             this.gbAccount.TabIndex = 15;
             this.gbAccount.TabStop = false;
             this.gbAccount.Text = "Discordアカウント";
@@ -233,7 +235,7 @@
             this.helpHToolStripMenuItem});
             this.msHelp.Location = new System.Drawing.Point(0, 0);
             this.msHelp.Name = "msHelp";
-            this.msHelp.Size = new System.Drawing.Size(309, 24);
+            this.msHelp.Size = new System.Drawing.Size(328, 24);
             this.msHelp.TabIndex = 16;
             this.msHelp.Text = "menuStrip1";
             // 
@@ -247,12 +249,12 @@
             this.helpHToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.helpHToolStripMenuItem.Text = "Help(&H)";
             // 
-            // tsmiLicense
+            // tsmiWebsite
             // 
-            this.tsmiLicense.Name = "tsmiLicense";
-            this.tsmiLicense.Size = new System.Drawing.Size(232, 22);
-            this.tsmiLicense.Text = "License(&L)";
-            this.tsmiLicense.Click += new System.EventHandler(this.licenseLToolStripMenuItem_Click);
+            this.tsmiWebsite.Name = "tsmiWebsite";
+            this.tsmiWebsite.Size = new System.Drawing.Size(232, 22);
+            this.tsmiWebsite.Text = "DiscordBouyomichan Website";
+            this.tsmiWebsite.Click += new System.EventHandler(this.websiteToolStripMenuItem_Click);
             // 
             // tsmiAck
             // 
@@ -261,18 +263,38 @@
             this.tsmiAck.Text = "Acknowledgements && Credits";
             this.tsmiAck.Click += new System.EventHandler(this.acknowledgementsToolStripMenuItem_Click);
             // 
-            // tsmiWebsite
+            // tsmiLicense
             // 
-            this.tsmiWebsite.Name = "tsmiWebsite";
-            this.tsmiWebsite.Size = new System.Drawing.Size(232, 22);
-            this.tsmiWebsite.Text = "DiscordBouyomichan Website";
-            this.tsmiWebsite.Click += new System.EventHandler(this.websiteToolStripMenuItem_Click);
+            this.tsmiLicense.Name = "tsmiLicense";
+            this.tsmiLicense.Size = new System.Drawing.Size(232, 22);
+            this.tsmiLicense.Text = "License(&L)";
+            this.tsmiLicense.Click += new System.EventHandler(this.licenseLToolStripMenuItem_Click);
+            // 
+            // tbChatFormat
+            // 
+            this.tbChatFormat.Enabled = false;
+            this.tbChatFormat.Location = new System.Drawing.Point(124, 330);
+            this.tbChatFormat.Name = "tbChatFormat";
+            this.tbChatFormat.Size = new System.Drawing.Size(180, 19);
+            this.tbChatFormat.TabIndex = 17;
+            this.tbChatFormat.Text = "{0} {1}";
+            // 
+            // lChatFormat
+            // 
+            this.lChatFormat.AutoSize = true;
+            this.lChatFormat.Location = new System.Drawing.Point(18, 333);
+            this.lChatFormat.Name = "lChatFormat";
+            this.lChatFormat.Size = new System.Drawing.Size(100, 12);
+            this.lChatFormat.TabIndex = 12;
+            this.lChatFormat.Text = "読み上げフォーマット";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 356);
+            this.ClientSize = new System.Drawing.Size(328, 386);
+            this.Controls.Add(this.lChatFormat);
+            this.Controls.Add(this.tbChatFormat);
             this.Controls.Add(this.chkBot);
             this.Controls.Add(this.gbChannelRestrict);
             this.Controls.Add(this.chkOwn);
@@ -302,12 +324,12 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbTargetChannel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.ComboBox cbTargetServer;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tsslDiscordConnection;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbMailAddr;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label lMail;
         private System.Windows.Forms.Label lPassword;
         private System.Windows.Forms.Label lServer;
@@ -323,6 +345,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiLicense;
         private System.Windows.Forms.ToolStripMenuItem tsmiAck;
         private System.Windows.Forms.ToolStripMenuItem tsmiWebsite;
+        private System.Windows.Forms.TextBox tbChatFormat;
+        private System.Windows.Forms.Label lChatFormat;
     }
 }
 

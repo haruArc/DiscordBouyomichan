@@ -22,17 +22,18 @@ namespace DiscordBouyomichan
             InitializeComponent();
             client.Log.Message += (s, e) => Console.WriteLine($"[{e.Severity}] {e.Source}: {e.Message}");
             client.MessageReceived += Client_MessageReceived;
-            textBox1.Text = Properties.Settings.Default.mail;
-            textBox2.Text = Properties.Settings.Default.password;
+            tbMailAddr.Text = Properties.Settings.Default.mail;
+            tbPassword.Text = Properties.Settings.Default.password;
             chkBot.Checked = Properties.Settings.Default.isBot;
             chkOwn.Checked = Properties.Settings.Default.isOwn;
             chkRestrictChannel.Checked = Properties.Settings.Default.restrictChannel;
+            tbChatFormat.Text = Properties.Settings.Default.chatFormat;
         }
 
         private void button1_Click(object sender, EventArgs ea)
         {
-            string login = textBox1.Text;
-            string password = textBox2.Text;
+            string login = tbMailAddr.Text;
+            string password = tbPassword.Text;
 
             gbAccount.Enabled = false;
 
@@ -79,6 +80,7 @@ namespace DiscordBouyomichan
             gbChannelRestrict.Enabled = true;
             chkOwn.Enabled = true;
             chkBot.Enabled = true;
+            tbChatFormat.Enabled = true;
 
             cbTargetServer.Items.Clear();
             foreach(var server in servers)
@@ -141,7 +143,7 @@ namespace DiscordBouyomichan
 
             try
             {
-                bcc.AddTalkTask(e.Message.User.Name + " " + e.Message.Text);
+                bcc.AddTalkTask(String.Format(tbChatFormat.Text, e.Message.User.Name , e.Message.Text, e.Message.Server.Name, e.Message.Channel.Name));
                 statusStrip.Items[1].Text = "棒読みちゃん接続済";
             }
             catch
@@ -164,13 +166,14 @@ namespace DiscordBouyomichan
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.mail = textBox1.Text;
-            Properties.Settings.Default.password = textBox2.Text;
+            Properties.Settings.Default.mail = tbMailAddr.Text;
+            Properties.Settings.Default.password = tbPassword.Text;
             Properties.Settings.Default.restrictChannel = chkRestrictChannel.Checked;
             Properties.Settings.Default.isBot = chkBot.Checked;
             Properties.Settings.Default.isOwn = chkOwn.Checked;
+            Properties.Settings.Default.chatFormat = tbChatFormat.Text;
 
-            if(lbTargetChannel.SelectedItem != null)
+            if (lbTargetChannel.SelectedItem != null)
                 Properties.Settings.Default.targetServer = ((Channel)lbTargetChannel.SelectedItem).Id;
             if(cbTargetServer.SelectedItem != null)
                 Properties.Settings.Default.targetChannel = ((Server)cbTargetServer.SelectedItem).Id;
